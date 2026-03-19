@@ -1,0 +1,3 @@
+- Difference between old react way and new next.js way
+- Difference between virtual DOM and actual DOM
+- Hydration

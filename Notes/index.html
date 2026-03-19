@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { font-family: sans-serif; max-width: 500px; margin: 40px auto; }
+
+  .panel { border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+
+  .panel h3 { margin: 0; padding: 14px 16px; cursor: pointer; background: #f5f5f5; }
+  .panel h3:hover { background: #eee; }
+
+  .panel-content { display: none; padding: 14px 16px; }
+  .panel-content.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <h3 onclick="toggle(this)">About</h3>
+  <div class="panel-content">With a population of about 2 million...</div>
+</div>
+
+<div class="panel">
+  <h3 onclick="toggle(this)">Etymology</h3>
+  <div class="panel-content">The name comes from...</div>
+</div>
+
+<div class="panel">
+  <h3 onclick="toggle(this)">History</h3>
+  <div class="panel-content">Founded in the 19th century...</div>
+</div>
+
+<script>
+  function toggle(el) {
+    // أغلق كل الـ panels
+    document.querySelectorAll('.panel-content').forEach(p => p.classList.remove('active'));
+    // افتح اللي ضغطت عليه
+    el.nextElementSibling.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

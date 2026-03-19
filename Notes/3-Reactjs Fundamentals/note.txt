@@ -1,0 +1,5 @@
+- We can use css, even if we use tailwnand css in postCss.config
+- Each Static Files we put it in public Folder (like html, images...)
+- There's a syntax called <HMR>, it's used in nextjs to provid
+a changing of web page without refresh
+- The tailwnand css is already styled on the telephones

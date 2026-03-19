@@ -1,0 +1,31 @@
+-- Gallery --
+
+Gallery
+ ├─ Profile
+ ├─ Profile
+ └─ Profile
+
+
+--------------
+--- Profile --
+
+Profile
+ └─ Card
+     └─ Avatar
+         └─ img
+
+Or:
+
+Profile
+   |
+   v
+<Card>
+   |
+   v
+children = <Avatar/>
+   |
+   v
+Avatar
+   |
+   v
+<img />
