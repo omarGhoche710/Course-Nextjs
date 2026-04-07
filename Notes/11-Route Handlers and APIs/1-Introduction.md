@@ -1,0 +1,14 @@
+app/
+├── api/
+│   ├── chat/
+│   │   └── route.ts    ← اللي عملناه قبل
+│   └── users/
+│       └── route.ts    ← الجديد
+└── page.tsx
+|
+|___ lib/
+|     |__ data/
+|          |__ users.ts
+|
+|___ types/
+      |__ user.ts
