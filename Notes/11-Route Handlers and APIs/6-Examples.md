@@ -61,11 +61,6 @@ export async function PUT(
     return NextResponse.json({ message: "Please enter data" }, { status: 400 });
   }
 
-  // validate field
-  if (!body.name) {
-    return NextResponse.json({ message: "Name is required" }, { status: 400 });
-  }
-
   // --- Error ---
   // let targetUser: User | undefined = users.find((user) => user.id === userId);
   // targetUser = { ...targetUser, ...body, id: id };
