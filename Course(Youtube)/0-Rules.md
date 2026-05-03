@@ -85,9 +85,87 @@
   - Slots are combined with the regular Page component to form the final page
 
 * Import Type:
-  - Use import type when only referencing a name for type-checking (e.g., req:        NextRequest), as it is erased during compilation.
-    Use a regular import when you need the runtime value, such as instantiating a class with new NextRequest().
+  - Use import type when only referencing a name for type-checking (e.g., req: NextRequest), as it is erased during compilation.
+  - Use a regular import when you need the runtime value, such as instantiating a class with new NextRequest().
     Would you like to see a one-line example of how to combine both?
 
 * Default Content Type:
   - By default content type is text/plain
+
+* Caching in Route Handlers
+  - Route handlers are not cached by default but you can opt into caching when using the GET method
+  - Since the data in the database rarely changes, every request in this endpoint will trigger a databse query wich is inefficient, to avoid this you use caching[simply we can use => export const dynamic = "force-static"], and that will ensure that the response is cached and saved instantly to all users  
+  - we can't test the cahing in static data we need dynamic data...
+  - we can't see the caching in development mode, we need to use the build mode.
+  - if we want to revalidate our data we can use [export const revalidate = 10]
+  - Caching only works with GET methods
+  - Other HTTP methods like POST, PUT, or DELETE are never cached
+  - if you're using dynamic functions like headers() and cookies(), or working with the request object in your GET method, caching won't be applied
+  - Keys: 
+    ```plaintText
+    |__ export const dynamic = "force-static"
+    |__ export const revalidate = 10 (10s)
+    ```
+
+- Rewrites:
+  - rewrites: take you to the new URL but no changing in the url at the http://...
+
+- Custome Header:
+  - custom-header: custome headers are super useful for passing extra information wich can be used by client side scripts of for debugging.
+
+## Routing section summary:
+  ```
+  - Route definition
+  - Pages and layouts
+  - Dynamic routes  
+  - Route groups
+  - Linking and navigation
+  - Loading and error states
+  - Parallel and intercepting routes
+  - Route handlers and middleware
+  ```
+
+---
+
+* React Server Component:
+  - In the RSC architecture and by extension in the Next.js app router, components
+  are server components by default
+  - To create client components, add the "use client" directive at the top of the file
+  - Server components are rendered exclusively on the server
+  - Client components primarily operate on the client but can (and should ) also run once on the server for better performance
+  - On development mode, there is strict mode because that we see the message is logged twice in the browser.
+
+* Difference bteween route.ts and page.tsx in rebuild time
+
+| Feature          | Page (page.tsx)                                             | Route (route.ts)                                     |
+| ---------------- | ----------------------------------------------------------- | ---------------------------------------------------- |
+| Default Behavior | Static (Pre-rendered at Build)                              | Dynamic (Executed at Request)                        |
+| Goal             | Maximum Speed (UX)                                          | Data Accuracy                                        |
+| Dynamic Trigger  | Calling `cookies()`, `headers()`, أو استخدام `searchParams` | Using POST/PUT/DELETE أو الوصول إلى `Request` object |
+| Time Handling    | Shows the Build Time                                        | Shows the Request Time                               |
+
+* Development Mode
+  - in development mode we have an important indicator
+  of static and dynamic route
+  ![alt text](image-15.png)
+
+* Production Mode
+  - in product mode we need to delete the .next folder created at development mode to see the contents of folder...
+
+* Static rendering summary
+
+Static rendering is a strategy where the HTML is generated at build time
+
+Along with the HTML, RSC payloads for components and JavaScript chunks for
+client-side hydration are created
+
+Direct route visits serve HTML files
+
+Client-side navigation uses RSC payloads and JavaScript chunks without
+additional server requests
+
+Static rendering is great for performance, especially in blogs, documentation, and
+marketing pages
+
+
+

@@ -1,7 +1,7 @@
 ## Naming Components
 
 - "/" => Home
-- "/about" => About
+- "/about" => AboutPage
 - "/products/[productId]" => ProductDetails ([productId] more descriptive than [id])
 - "/products/[productId]/reviews/[reviewsId]" => ProductReview
 - "/docs/[[...slug]]" => Docs
